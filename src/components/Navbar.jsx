@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   return (
     <header className="w-full font-sans">
@@ -14,9 +18,9 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M17 11A6 6 0 105 11a6 6 0 0012 0z" />
             </svg>
           </button>
-          <a href="#about" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">ABOUT</a>
-          <a href="#faq" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">FAQ</a>
-          <a href="#contact" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">CONTACT</a>
+          <a href="#about" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">{t.about}</a>
+          <a href="#faq" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">{t.faq}</a>
+          <a href="#contact" className="font-semibold tracking-wide hover:text-amber-300 transition-colors">{t.contact}</a>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -30,7 +34,7 @@ const Navbar = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            HELP@COMPANY.COM
+            {t.help}
           </span>
           <div className="flex items-center gap-3">
             <a href="#facebook" aria-label="Facebook" className="hover:text-amber-300 transition-colors">
@@ -49,6 +53,14 @@ const Navbar = () => {
               </svg>
             </a>
           </div>
+
+          {/* Language Toggle Button */}
+          <button
+            onClick={toggleLanguage}
+            className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-md text-white font-semibold text-xs transition-colors"
+          >
+            {language === 'en' ? 'বাংলা' : 'English'}
+          </button>
         </div>
       </div>
 
@@ -66,15 +78,15 @@ const Navbar = () => {
             className="h-9 w-9 hidden sm:block"
           />
           <a href="#home" className="text-xl font-semibold tracking-wide text-gray-800">
-            Biyer <span className="text-amber-600 font-bold">Kbori</span>
+            {t.biyerKbori} <span className="text-amber-600 font-bold">{t.kbori}</span>
           </a>
         </div>
 
         <nav className="hidden lg:flex items-center gap-8 text-[#5a4a1f] font-semibold tracking-wide">
-          <a href="#home" className="hover:text-amber-600 transition-colors">Home</a>
-          <a href="#how-it-works" className="hover:text-amber-600 transition-colors">How it Works</a>
-          <a href="#features" className="hover:text-amber-600 transition-colors">Features</a>
-          <a href="#about-us" className="hover:text-amber-600 transition-colors">About Us</a>
+          <a href="#home" className="hover:text-amber-600 transition-colors">{t.home}</a>
+          <a href="#how-it-works" className="hover:text-amber-600 transition-colors">{t.howItWorks}</a>
+          <a href="#features" className="hover:text-amber-600 transition-colors">{t.features}</a>
+          <a href="#about-us" className="hover:text-amber-600 transition-colors">{t.aboutUs}</a>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -82,13 +94,13 @@ const Navbar = () => {
             onClick={() => setIsLoginOpen(true)}
             className="text-[#5a4a1f] font-semibold hover:text-amber-600 transition-colors"
           >
-            Login
+            {t.login}
           </button>
           <button
             onClick={() => setIsSignupOpen(true)}
             className="text-[#5a4a1f] font-semibold hover:text-amber-600 transition-colors"
           >
-            Sign Up
+            {t.signUp}
           </button>
         </div>
       </div>
@@ -106,42 +118,42 @@ const Navbar = () => {
               </svg>
             </button>
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-[#5a4a1f]">Welcome Back!</h2>
-              <p className="text-gray-500 mt-2">Login to your Biyer Kbori account</p>
+              <h2 className="text-3xl font-bold text-[#5a4a1f]">{t.welcomeBack}</h2>
+              <p className="text-gray-500 mt-2">{t.loginToAccount}</p>
             </div>
             <form className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.emailAddress}</label>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t.enterEmail}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.password}</label>
                 <input
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder={t.enterPassword}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center gap-2 text-gray-600">
                   <input type="checkbox" className="rounded border-gray-300 text-amber-500 focus:ring-amber-500" />
-                  Remember me
+                  {t.rememberMe}
                 </label>
-                <a href="#forgot" className="text-amber-600 hover:text-amber-700 font-semibold">Forgot Password?</a>
+                <a href="#forgot" className="text-amber-600 hover:text-amber-700 font-semibold">{t.forgotPassword}</a>
               </div>
               <button
                 type="submit"
                 className="w-full py-3 bg-gradient-to-r from-[#5a4a1f] to-[#7a5e1f] text-white font-bold rounded-lg hover:opacity-90 transition-opacity"
               >
-                Login
+                {t.login}
               </button>
             </form>
             <p className="text-center text-gray-600 mt-6">
-              Don't have an account?{' '}
+              {t.dontHaveAccount}{' '}
               <button
                 onClick={() => {
                   setIsLoginOpen(false);
@@ -149,7 +161,7 @@ const Navbar = () => {
                 }}
                 className="text-amber-600 font-semibold hover:text-amber-700 transition-colors"
               >
-                Sign Up
+                {t.signUp}
               </button>
             </p>
           </div>
@@ -169,39 +181,39 @@ const Navbar = () => {
               </svg>
             </button>
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-[#5a4a1f]">Create Account</h2>
-              <p className="text-gray-500 mt-2">Join Biyer Kbori today!</p>
+              <h2 className="text-3xl font-bold text-[#5a4a1f]">{t.createAccount}</h2>
+              <p className="text-gray-500 mt-2">{t.joinToday}</p>
             </div>
             <form className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.fullName}</label>
                 <input
                   type="text"
-                  placeholder="Enter your full name"
+                  placeholder={t.enterFullName}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.emailAddress}</label>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t.enterEmail}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.password}</label>
                 <input
                   type="password"
-                  placeholder="Create a password"
+                  placeholder={t.createPassword}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Confirm Password</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">{t.confirmPassword}</label>
                 <input
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder={t.confirmYourPassword}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
                 />
               </div>
@@ -209,11 +221,11 @@ const Navbar = () => {
                 type="submit"
                 className="w-full py-3 bg-gradient-to-r from-[#5a4a1f] to-[#7a5e1f] text-white font-bold rounded-lg hover:opacity-90 transition-opacity"
               >
-                Create Account
+                {t.createAccount}
               </button>
             </form>
             <p className="text-center text-gray-600 mt-6">
-              Already have an account?{' '}
+              {t.alreadyHaveAccount}{' '}
               <button
                 onClick={() => {
                   setIsSignupOpen(false);
@@ -221,7 +233,7 @@ const Navbar = () => {
                 }}
                 className="text-amber-600 font-semibold hover:text-amber-700 transition-colors"
               >
-                Login
+                {t.login}
               </button>
             </p>
           </div>

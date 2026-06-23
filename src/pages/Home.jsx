@@ -1,6 +1,11 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const Home = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section
       className="relative min-h-screen flex items-end font-sans"
@@ -22,13 +27,13 @@ const Home = () => {
             <span className="uppercase">Matrimony</span>
           </p>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-            Find your
+            {t.findYour}
           </h1>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mt-1">
-            <span className="text-red-600">Right Match</span> here
+            <span className="text-red-600">{t.rightMatch}</span> {t.here}
           </h2>
           <p className="mt-6 text-lg sm:text-xl">
-            Most trusted Matrimony Brand in the World.
+            {t.mostTrusted}
           </p>
         </div>
 
@@ -40,10 +45,10 @@ const Home = () => {
               defaultValue=""
             >
               <option value="" disabled className="text-gray-400">
-                I'm looking for
+                {t.lookingFor}
               </option>
-              <option value="bride">Bride</option>
-              <option value="groom">Groom</option>
+              <option value="bride">{t.bride}</option>
+              <option value="groom">{t.groom}</option>
             </select>
 
             <select
@@ -51,7 +56,7 @@ const Home = () => {
               defaultValue=""
             >
               <option value="" disabled className="text-gray-400">
-                Age
+                {t.age}
               </option>
               <option value="18-25">18 - 25</option>
               <option value="26-35">26 - 35</option>
@@ -63,12 +68,12 @@ const Home = () => {
               defaultValue=""
             >
               <option value="" disabled className="text-gray-400">
-                Religion
+                {t.religion}
               </option>
-              <option value="christian">Christian</option>
-              <option value="muslim">Muslim</option>
-              <option value="hindu">Hindu</option>
-              <option value="other">Other</option>
+              <option value="christian">{t.christian}</option>
+              <option value="muslim">{t.muslim}</option>
+              <option value="hindu">{t.hindu}</option>
+              <option value="other">{t.other}</option>
             </select>
 
             <select
@@ -76,15 +81,15 @@ const Home = () => {
               defaultValue=""
             >
               <option value="" disabled className="text-gray-400">
-                Location
+                {t.location}
               </option>
-              <option value="dhaka">Dhaka</option>
-              <option value="chittagong">Chittagong</option>
-              <option value="khulna">Khulna</option>
+              <option value="dhaka">{t.dhaka}</option>
+              <option value="chittagong">{t.chittagong}</option>
+              <option value="khulna">{t.khulna}</option>
             </select>
 
             <button className="rounded-md bg-gradient-to-r from-[#7a9bb0] to-[#5a7d92] hover:from-[#688aa0] hover:to-[#4a6d82] text-white font-bold text-lg py-3 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Search
+              {t.search}
             </button>
           </div>
         </div>
