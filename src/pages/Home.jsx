@@ -12,7 +12,7 @@ const Home = () => {
       }}
     >
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="relative z-10 w-full px-6 md:px-10 pb-12 pt-32">
         {/* Headline */}
@@ -33,13 +33,13 @@ const Home = () => {
         </div>
 
         {/* Search bar */}
-        <div className="mt-10 max-w-5xl mx-auto bg-black/30 rounded-xl p-4 sm:p-6">
+        <div className="mt-10 max-w-5xl mx-auto bg-black/40 backdrop-blur-sm rounded-xl p-4 sm:p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             <select
-              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold bg-white/95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               defaultValue=""
             >
-              <option value="" disabled>
+              <option value="" disabled className="text-gray-400">
                 I'm looking for
               </option>
               <option value="bride">Bride</option>
@@ -47,10 +47,10 @@ const Home = () => {
             </select>
 
             <select
-              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold bg-white/95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               defaultValue=""
             >
-              <option value="" disabled>
+              <option value="" disabled className="text-gray-400">
                 Age
               </option>
               <option value="18-25">18 - 25</option>
@@ -59,10 +59,10 @@ const Home = () => {
             </select>
 
             <select
-              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold bg-white/95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               defaultValue=""
             >
-              <option value="" disabled>
+              <option value="" disabled className="text-gray-400">
                 Religion
               </option>
               <option value="christian">Christian</option>
@@ -72,10 +72,10 @@ const Home = () => {
             </select>
 
             <select
-              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded-md px-4 py-3 text-[#5a4a1f] font-semibold bg-white/95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               defaultValue=""
             >
-              <option value="" disabled>
+              <option value="" disabled className="text-gray-400">
                 Location
               </option>
               <option value="dhaka">Dhaka</option>
@@ -83,7 +83,7 @@ const Home = () => {
               <option value="khulna">Khulna</option>
             </select>
 
-            <button className="rounded-md bg-[#7a9bb0] hover:bg-[#688aa0] text-white font-semibold text-lg py-3 transition-colors">
+            <button className="rounded-md bg-gradient-to-r from-[#7a9bb0] to-[#5a7d92] hover:from-[#688aa0] hover:to-[#4a6d82] text-white font-bold text-lg py-3 transition-all duration-300 shadow-lg hover:shadow-xl">
               Search
             </button>
           </div>

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Navbar = () => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
+
   return (
     <header className="w-full font-sans">
       {/* Top bar */}
@@ -59,55 +62,187 @@ const Navbar = () => {
           </button>
           <img
             src="https://img.icons8.com/color/48/000000/wedding-rings.png"
-            alt="Wedding Matrimony logo"
+            alt="Biyer Kbori logo"
             className="h-9 w-9 hidden sm:block"
           />
           <a href="#home" className="text-xl font-semibold tracking-wide text-gray-800">
-            WEDDING <span className="text-amber-600 font-bold">MATRIMONY</span>
+            Biyer <span className="text-amber-600 font-bold">Kbori</span>
           </a>
         </div>
 
         <nav className="hidden lg:flex items-center gap-8 text-[#5a4a1f] font-semibold tracking-wide">
-          <a href="#explore" className="flex items-center gap-1 hover:text-amber-600 transition-colors">
-            EXPLORE
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <a href="#all-pages" className="flex items-center gap-1 hover:text-amber-600 transition-colors">
-            ALL PAGES
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <a href="#top-pages" className="flex items-center gap-1 hover:text-amber-600 transition-colors">
-            TOP PAGES
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <a href="#plans" className="hover:text-amber-600 transition-colors">PLANS</a>
-          <a href="#register" className="hover:text-amber-600 transition-colors">REGISTER</a>
-          <a href="#dashboard" className="flex items-center gap-1 hover:text-amber-600 transition-colors">
-            DASHBOARD
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
+          <a href="#home" className="hover:text-amber-600 transition-colors">Home</a>
+          <a href="#how-it-works" className="hover:text-amber-600 transition-colors">How it Works</a>
+          <a href="#features" className="hover:text-amber-600 transition-colors">Features</a>
+          <a href="#about-us" className="hover:text-amber-600 transition-colors">About Us</a>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            alt="Advisor avatar"
-            className="h-11 w-11 rounded-full object-cover ring-2 ring-pink-200"
-          />
-          <div className="hidden sm:block leading-tight">
-            <p className="text-xs text-gray-400 tracking-wide">ADVISOR</p>
-            <p className="text-[#5a4a1f] font-semibold">Ashley emyy</p>
-          </div>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsLoginOpen(true)}
+            className="text-[#5a4a1f] font-semibold hover:text-amber-600 transition-colors"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => setIsSignupOpen(true)}
+            className="text-[#5a4a1f] font-semibold hover:text-amber-600 transition-colors"
+          >
+            Sign Up
+          </button>
         </div>
       </div>
+
+      {/* Login Modal */}
+      {isLoginOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 relative animate-fadeIn">
+            <button
+              onClick={() => setIsLoginOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-[#5a4a1f]">Welcome Back!</h2>
+              <p className="text-gray-500 mt-2">Login to your Biyer Kbori account</p>
+            </div>
+            <form className="space-y-5">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <label className="flex items-center gap-2 text-gray-600">
+                  <input type="checkbox" className="rounded border-gray-300 text-amber-500 focus:ring-amber-500" />
+                  Remember me
+                </label>
+                <a href="#forgot" className="text-amber-600 hover:text-amber-700 font-semibold">Forgot Password?</a>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-[#5a4a1f] to-[#7a5e1f] text-white font-bold rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Login
+              </button>
+            </form>
+            <p className="text-center text-gray-600 mt-6">
+              Don't have an account?{' '}
+              <button
+                onClick={() => {
+                  setIsLoginOpen(false);
+                  setIsSignupOpen(true);
+                }}
+                className="text-amber-600 font-semibold hover:text-amber-700 transition-colors"
+              >
+                Sign Up
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Signup Modal */}
+      {isSignupOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 relative animate-fadeIn max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setIsSignupOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-[#5a4a1f]">Create Account</h2>
+              <p className="text-gray-500 mt-2">Join Biyer Kbori today!</p>
+            </div>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                <input
+                  type="password"
+                  placeholder="Create a password"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Confirm Password</label>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-[#5a4a1f] to-[#7a5e1f] text-white font-bold rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Create Account
+              </button>
+            </form>
+            <p className="text-center text-gray-600 mt-6">
+              Already have an account?{' '}
+              <button
+                onClick={() => {
+                  setIsSignupOpen(false);
+                  setIsLoginOpen(true);
+                }}
+                className="text-amber-600 font-semibold hover:text-amber-700 transition-colors"
+              >
+                Login
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+      `}</style>
     </header>
   );
 };
